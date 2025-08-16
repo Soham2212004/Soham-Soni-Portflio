@@ -51,7 +51,7 @@ const Education = () => {
             type="Bachelor Of Technology in Computer Science Engineering"
             time="2021-2025"
             place="Parul University, Vadodara, Gujarat"
-            info="Currently pursuing B.Tech in Computer Science with a CGPA of 7.51. Specializing in AI/ML technologies, 
+            info="Currently pursuing B.Tech in Computer Science with a CGPA of 7.63. Specializing in AI/ML technologies, 
             cloud computing, and software development. Actively engaged in practical projects involving artificial intelligence, 
             automation solutions, and modern development frameworks."
           />
