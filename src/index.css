@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-mont: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-mont);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+.sunset {
+  /* Gradient background for the whole page */
+  background: linear-gradient(135deg, #ffb347 0%, #ffcc80 40%, #ff758c 100%) !important;
+  color: #3d1c00 !important;
+}
+
+/* Apply gradient to body and override light backgrounds */
+.sunset body,
+.sunset .bg-light {
+  background: linear-gradient(135deg, #ffb347 0%, #ffcc80 40%, #ff758c 100%) !important;
+  color: #3d1c00 !important;
+}
+
+/* Card and container backgrounds for sunset mode */
+.sunset .bg-dark,
+.sunset .bg-gray-800,
+.sunset .bg-gray-900 {
+  background: rgba(255, 183, 77, 0.95) !important; /* semi-transparent orange */
+  color: #3d1c00 !important;
+}
+
+/* Accent and primary text colors */
+.sunset .text-dark,
+.sunset .text-gray-900,
+.sunset .text-gray-800 {
+  color: #3d1c00 !important;
+}
+
+.sunset .text-light,
+.sunset .text-white {
+  color: #fff8e7 !important;
+}
+
+/* Accent elements (buttons, links, highlights) */
+.sunset .bg-primary,
+.sunset .bg-accent,
+.sunset .bg-yellow-400 {
+  background: linear-gradient(90deg, #ff758c 0%, #ffb347 100%) !important;
+  color: #fff8e7 !important;
+}
+
+.sunset .border,
+.sunset .border-dark {
+  border-color: #ff758c !important;
+}
+
+/* Example for navbars or footers */
+.sunset nav,
+.sunset footer {
+  background: rgba(255, 183, 77, 0.85) !important;
+  color: #3d1c00 !important;
+}
+
+/* Example for links and buttons */
+.sunset a,
+.sunset button {
+  color: #ff758c !important;
+}
+
+.sunset a:hover,
+.sunset button:hover {
+  color: #ffb347 !important;
+}
+
+/* Example for code blocks or preformatted text */
+.sunset pre,
+.sunset code {
+  background: #fff3e0 !important;
+  color: #3d1c00 !important;
+}
+
+/* Optional: sunset scrollbar */
+.sunset ::-webkit-scrollbar-thumb {
+  background: #ff758c;
+}
+
+.sunset ::-webkit-scrollbar-track {
+  background: #ffcc80;
+}
