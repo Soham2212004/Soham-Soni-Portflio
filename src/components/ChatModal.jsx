@@ -15,7 +15,7 @@ const ChatModal = ({ isOpen, onClose }) => {
   const inputRef = useRef(null);
 
   // n8n webhook URL
-  const webhookUrl = 'n8n-production-c38c.up.railway.app/webhook/88679559-8e5d-4a00-ac66-25c7c9305444/chat';
+  const webhookUrl = 'https://n8n-production-c38c.up.railway.app/webhook/88679559-8e5d-4a00-ac66-25c7c9305444/chat';
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
