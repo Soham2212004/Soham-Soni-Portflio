@@ -215,7 +215,14 @@ const ChatModal = ({ isOpen, onClose }) => {
                         : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600'
                     }`}
                   >
-                    <p className="text-sm">{message.text}</p>
+                    <div className="text-sm whitespace-pre-wrap break-words">
+                      {message.text.split('\n').map((line, i, arr) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i < arr.length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
+                    </div>
                     <p className={`text-xs mt-1 ${
                       message.sender === 'user' 
                         ? 'text-blue-100' 
