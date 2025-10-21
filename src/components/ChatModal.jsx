@@ -15,7 +15,7 @@ const ChatModal = ({ isOpen, onClose }) => {
   const inputRef = useRef(null);
 
   // n8n webhook URL
-  const webhookUrl = 'https://soham-soni22-01.app.n8n.cloud/webhook/157822eb-15b1-43f8-914b-56461fbd10b3/chat';
+  const webhookUrl = 'http://localhost:5678/webhook/88679559-8e5d-4a00-ac66-25c7c9305444/chat';
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
