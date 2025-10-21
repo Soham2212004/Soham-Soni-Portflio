@@ -215,13 +215,44 @@ const ChatModal = ({ isOpen, onClose }) => {
                         : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600'
                     }`}
                   >
-                    <div className="text-sm whitespace-pre-wrap break-words">
-                      {message.text.split('\n').map((line, i, arr) => (
-                        <React.Fragment key={i}>
-                          {line}
-                          {i < arr.length - 1 && <br />}
-                        </React.Fragment>
-                      ))}
+                    <div className="text-sm whitespace-pre-wrap break-words leading-relaxed">
+                      {message.text.split('\n').map((line, i, arr) => {
+                        // Check if line is a bullet point
+                        const isBullet = line.trim().match(/^[-•*]\s/);
+                        const isNumbered = line.trim().match(/^\d+\.\s/);
+                        const isHeading = line.trim().match(/^#{1,3}\s/);
+                        const isBold = line.trim().match(/^\*\*(.*)\*\*$/);
+                        
+                        // Remove markdown symbols
+                        let cleanLine = line;
+                        if (isHeading) {
+                          cleanLine = line.replace(/^#{1,3}\s/, '');
+                        }
+                        if (isBold) {
+                          cleanLine = line.replace(/^\*\*/, '').replace(/\*\*$/, '');
+                        }
+                        
+                        return (
+                          <React.Fragment key={i}>
+                            {isHeading ? (
+                              <div className="font-semibold mt-2 mb-1">{cleanLine}</div>
+                            ) : isBold ? (
+                              <div className="font-semibold">{cleanLine}</div>
+                            ) : isBullet ? (
+                              <div className="ml-4 my-1">
+                                <span className="mr-2">•</span>
+                                {line.replace(/^[-•*]\s/, '')}
+                              </div>
+                            ) : isNumbered ? (
+                              <div className="ml-4 my-1">{line}</div>
+                            ) : line.trim() === '' ? (
+                              <div className="h-2" />
+                            ) : (
+                              <div className="my-1">{line}</div>
+                            )}
+                          </React.Fragment>
+                        );
+                      })}
                     </div>
                     <p className={`text-xs mt-1 ${
                       message.sender === 'user' 
