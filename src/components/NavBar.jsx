@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from './Link'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { GithubIcon, LinkedInIcon, InstagramIcon, CredlyIcon, MailIcon, SunIcon, MoonIcon } from './Icons'
 import { motion } from 'framer-motion'
 import useThemeSwitcher from '../hooks/useThemeSwitcher'
@@ -25,17 +25,18 @@ const CustomLink = ({ href, title, className = "" }) => {
 
 const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   const location = useLocation()
+  const navigate = useNavigate()
   
   const handleClick = () => {
     toggle()
-    // Use setTimeout to allow animation to complete
-    setTimeout(() => {
-      window.location.href = href
-    }, 100)
+    navigate(href)
   }
   
   return (
-    <button onClick={handleClick} className={`${className} relative group text-light dark:text-dark my-2`}>
+    <button 
+      onClick={handleClick} 
+      className={`${className} relative group text-light dark:text-dark my-2`}
+    >
       {title}
       <span 
         className={`h-[1px] inline-block bg-light absolute left-0 -bottom-0.5
