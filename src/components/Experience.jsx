@@ -92,7 +92,7 @@ const Experience = () => {
           <Details
             position="Cloud Computing Intern" 
             company="Uniconverge Technologies"
-            companyLink="https://www.uniconverge.com/"
+            companyLink="https://www.uniconvergetech.in/"
             time="Apr 2024 - Jun 2024" 
             address="Vadodara, India"
             work="Deployed and configured AI/ML applications on Google Cloud Platform and Microsoft Azure. 
