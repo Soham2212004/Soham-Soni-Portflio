@@ -164,7 +164,9 @@ const ChatModal = ({ isOpen, onClose }) => {
 
           {/* Chat Modal */}
           <div
-            className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden
+            sm:bottom-20 sm:right-4 sm:left-4 sm:w-auto sm:max-w-[calc(100vw-2rem)]
+            xs:bottom-16 xs:right-2 xs:left-2 xs:w-auto xs:max-w-[calc(100vw-1rem)] xs:h-[450px]"
             style={{
               opacity: 1,
               transform: 'translateY(0px) scale(1)',
@@ -172,24 +174,24 @@ const ChatModal = ({ isOpen, onClose }) => {
             }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 text-white">
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 text-white sm:p-3 xs:p-2.5">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <div className="flex items-center space-x-3 xs:space-x-2">
+                  <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center xs:w-8 xs:h-8">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="xs:w-4 xs:h-4">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Soham's Assistant</h3>
-                    <p className="text-xs opacity-75">Online • Powered by AI</p>
+                    <h3 className="font-semibold text-sm xs:text-xs">Soham's Assistant</h3>
+                    <p className="text-xs opacity-75 xs:text-[10px]">Online • Powered by AI</p>
                   </div>
                 </div>
                 <button
                   onClick={onClose}
-                  className="w-8 h-8 rounded-full hover:bg-white hover:bg-opacity-20 flex items-center justify-center transition-colors"
+                  className="w-8 h-8 rounded-full hover:bg-white hover:bg-opacity-20 flex items-center justify-center transition-colors xs:w-7 xs:h-7"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="xs:w-3.5 xs:h-3.5">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
                   </svg>
                 </button>
@@ -197,7 +199,7 @@ const ChatModal = ({ isOpen, onClose }) => {
             </div>
 
             {/* Messages Container */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-800">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-800 sm:p-3 xs:p-2 xs:space-y-3">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -209,13 +211,13 @@ const ChatModal = ({ isOpen, onClose }) => {
                   }}
                 >
                   <div
-                    className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${
+                    className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl sm:max-w-[75%] xs:max-w-[80%] xs:px-3 xs:py-1.5 ${
                       message.sender === 'user'
                         ? 'bg-blue-500 text-white'
                         : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600'
                     }`}
                   >
-                    <div className="text-sm whitespace-pre-wrap break-words leading-relaxed">
+                    <div className="text-sm whitespace-pre-wrap break-words leading-relaxed xs:text-xs">
                       {message.text.split('\n').map((line, i, arr) => {
                         // Check if line is a bullet point
                         const isBullet = line.trim().match(/^[-•*]\s/);
@@ -235,18 +237,18 @@ const ChatModal = ({ isOpen, onClose }) => {
                         return (
                           <React.Fragment key={i}>
                             {isHeading ? (
-                              <div className="font-semibold mt-2 mb-1">{cleanLine}</div>
+                              <div className="font-semibold mt-2 mb-1 xs:mt-1">{cleanLine}</div>
                             ) : isBold ? (
                               <div className="font-semibold">{cleanLine}</div>
                             ) : isBullet ? (
-                              <div className="ml-4 my-1">
+                              <div className="ml-4 my-1 xs:ml-2">
                                 <span className="mr-2">•</span>
                                 {line.replace(/^[-•*]\s/, '')}
                               </div>
                             ) : isNumbered ? (
-                              <div className="ml-4 my-1">{line}</div>
+                              <div className="ml-4 my-1 xs:ml-2">{line}</div>
                             ) : line.trim() === '' ? (
-                              <div className="h-2" />
+                              <div className="h-2 xs:h-1" />
                             ) : (
                               <div className="my-1">{line}</div>
                             )}
@@ -254,7 +256,7 @@ const ChatModal = ({ isOpen, onClose }) => {
                         );
                       })}
                     </div>
-                    <p className={`text-xs mt-1 ${
+                    <p className={`text-xs mt-1 xs:text-[10px] ${
                       message.sender === 'user' 
                         ? 'text-blue-100' 
                         : 'text-gray-500 dark:text-gray-400'
@@ -275,11 +277,11 @@ const ChatModal = ({ isOpen, onClose }) => {
                     transition: 'all 0.3s ease-out'
                   }}
                 >
-                  <div className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 px-4 py-2 rounded-2xl">
+                  <div className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 px-4 py-2 rounded-2xl xs:px-3 xs:py-1.5">
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce xs:w-1.5 xs:h-1.5" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce xs:w-1.5 xs:h-1.5" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce xs:w-1.5 xs:h-1.5" style={{ animationDelay: '300ms' }}></div>
                     </div>
                   </div>
                 </div>
@@ -289,8 +291,8 @@ const ChatModal = ({ isOpen, onClose }) => {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex space-x-2">
+            <div className="p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 sm:p-3 xs:p-2">
+              <div className="flex space-x-2 xs:space-x-1.5">
                 <input
                   ref={inputRef}
                   type="text"
@@ -298,15 +300,15 @@ const ChatModal = ({ isOpen, onClose }) => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
-                  className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
+                  className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white text-sm xs:px-3 xs:py-1.5 xs:text-xs"
                   disabled={isTyping}
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim() || isTyping}
-                  className="w-10 h-10 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-full flex items-center justify-center transition-colors"
+                  className="w-10 h-10 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-full flex items-center justify-center transition-colors xs:w-8 xs:h-8 flex-shrink-0"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="xs:w-3.5 xs:h-3.5">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                   </svg>
                 </button>
